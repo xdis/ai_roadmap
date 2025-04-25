@@ -1,0 +1,3 @@
+# 温度缩放
+scaled_logits = logits / temperature  # temperature > 0
+probabilities = F.softmax(scaled_logits, dim=-1)

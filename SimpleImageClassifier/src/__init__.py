@@ -1,0 +1,1 @@
+# SimpleImageClassifier package

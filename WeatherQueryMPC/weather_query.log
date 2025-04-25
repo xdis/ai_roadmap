@@ -1,0 +1,26 @@
+--- Weather Query: 2025-04-22T15:05:29.917057 ---
+Error: Request failed: HTTPSConnectionPool(host='api.openai.com', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000208D1DE51E0>, 'Connection to api.openai.com timed out. (connect timeout=None)'))
+
+--- 天气查询: 2025-04-22T15:08:10.770326 ---
+错误: 请求失败: HTTPSConnectionPool(host='api.openai.com', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x00000259F8525060>, 'Connection to api.openai.com timed out. (connect timeout=None)'))
+
+--- 天气查询: 2025-04-22T15:17:48.180316 ---
+错误: 连接错误: 无法连接到OpenAI API服务器。请检查您的网络连接、代理设置或防火墙。详细信息: HTTPSConnectionPool(host='api.openai.com', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ProtocolError('Connection aborted.', ConnectionResetError(10054, '远程主机强迫关闭了一个现有的连接。', None, 10054, None)))
+
+--- 天气查询: 2025-04-22T15:18:45.754314 ---
+错误: 请求失败: HTTPSConnectionPool(host='api.openai.com', port=443): Max retries exceeded with url: /v1/chat/completions (Caused by ResponseError('too many 429 error responses'))
+
+--- 天气查询: 2025-04-22T15:24:43.506144 ---
+位置: 深圳
+天气: 深圳今天的天气情况如下：
+
+温度：26°C
+湿度：80%
+风况：东南风 3级
+天气状况：多云
+天气预报：今天多云，有阵雨，气温25°C至32°C
+
+(注意：由于API调用失败，这是模拟生成的天气数据，仅供参考)
+数据源: mock
+模型: 模拟数据
+

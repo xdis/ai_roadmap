@@ -1,0 +1,46 @@
+def compare_position_encodings(sentence_length=20, d_model=128):
+    # 创建随机嵌入作为基线
+    random_embeddings = torch.randn(1, sentence_length, d_model)
+    
+    # 1. 正弦位置编码
+    sine_pe = PositionalEncoding(d_model)
+    sine_encoded = sine_pe(random_embeddings.clone())
+    
+    # 2. 可学习位置编码(模拟训练后状态)
+    learnable_pe = torch.zeros(1, sentence_length, d_model)
+    learnable_pe.normal_()  # 使用随机值模拟学习结果
+    learnable_encoded = random_embeddings.clone() + learnable_pe
+    
+    # 计算各位置间余弦相似度
+    def compute_similarity_matrix(embeddings):
+        # 去除批次维度并归一化
+        embed = embeddings.squeeze(0)
+        embed_norm = embed / embed.norm(dim=1, keepdim=True)
+        
+        # 计算余弦相似度
+        similarity = torch.matmul(embed_norm, embed_norm.transpose(0, 1))
+        return similarity.numpy()
+    
+    # 可视化相似度矩阵
+    plt.figure(figsize=(15, 5))
+    
+    plt.subplot(1, 3, 1)
+    plt.imshow(compute_similarity_matrix(random_embeddings), cmap='viridis')
+    plt.title('No Position Encoding')
+    plt.colorbar()
+    
+    plt.subplot(1, 3, 2)
+    plt.imshow(compute_similarity_matrix(sine_encoded), cmap='viridis')
+    plt.title('Sinusoidal Position Encoding')
+    plt.colorbar()
+    
+    plt.subplot(1, 3, 3)
+    plt.imshow(compute_similarity_matrix(learnable_encoded), cmap='viridis')
+    plt.title('Learnable Position Encoding')
+    plt.colorbar()
+    
+    plt.tight_layout()
+    plt.show()
+
+# 运行比较
+compare_position_encodings()
